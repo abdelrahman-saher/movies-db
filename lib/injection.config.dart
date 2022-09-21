@@ -12,7 +12,7 @@ import 'package:injectable/injectable.dart' as _i2;
 import 'core/API/api_client.dart' as _i6;
 import 'core/API/api_consumer.dart' as _i5;
 import 'core/API/app_interceptiors.dart' as _i3;
-import 'core/injection/injectable_modules.dart' as _i19;
+import 'core/injection/injectable_modules.dart' as _i20;
 import 'features/person_details/data/data/remote/person_info_remote_data_source.dart'
     as _i11;
 import 'features/person_details/data/data/remote/person_info_remote_data_source_impl.dart'
@@ -21,9 +21,11 @@ import 'features/person_details/data/repository/person_info_repository.dart'
     as _i14;
 import 'features/person_details/domain/repository/person_info_repository.dart'
     as _i13;
-import 'features/person_details/domain/usecases/get_info_usecase.dart' as _i16;
+import 'features/person_details/domain/usecases/get_images_usecase.dart'
+    as _i16;
+import 'features/person_details/domain/usecases/get_info_usecase.dart' as _i17;
 import 'features/person_details/presentation/bloc/get_person_info/get_person_info_bloc.dart'
-    as _i18;
+    as _i19;
 import 'features/popular_people/data/data/remote/people_remote_data_source.dart'
     as _i7;
 import 'features/popular_people/data/data/remote/people_remote_data_source_impl.dart'
@@ -34,7 +36,7 @@ import 'features/popular_people/domain/repository/people_repository.dart'
 import 'features/popular_people/domain/usecases/get_people_usecase.dart'
     as _i15;
 import 'features/popular_people/presentation/bloc/get_people_data/get_people_data_bloc.dart'
-    as _i17; // ignore_for_file: unnecessary_lambdas
+    as _i18; // ignore_for_file: unnecessary_lambdas
 
 // ignore_for_file: lines_longer_than_80_chars
 /// initializes the registration of provided dependencies inside of [GetIt]
@@ -62,13 +64,17 @@ _i1.GetIt $initGetIt(
       _i14.PersonInfoRepositoryImpl(get<_i11.PersonInfoRemoteDataSource>()));
   gh.factory<_i15.GetPeopleUseCase>(
       () => _i15.GetPeopleUseCase(get<_i9.PepoleRepository>()));
-  gh.factory<_i16.GetPersonInfoUseCase>(
-      () => _i16.GetPersonInfoUseCase(get<_i13.PersonInfoRepository>()));
-  gh.factory<_i17.GetPeopleDataBloc>(
-      () => _i17.GetPeopleDataBloc(get<_i15.GetPeopleUseCase>()));
-  gh.factory<_i18.GetPersonInfoBloc>(
-      () => _i18.GetPersonInfoBloc(get<_i16.GetPersonInfoUseCase>()));
+  gh.factory<_i16.GetPersonImagesUseCase>(
+      () => _i16.GetPersonImagesUseCase(get<_i13.PersonInfoRepository>()));
+  gh.factory<_i17.GetPersonInfoUseCase>(
+      () => _i17.GetPersonInfoUseCase(get<_i13.PersonInfoRepository>()));
+  gh.factory<_i18.GetPeopleDataBloc>(
+      () => _i18.GetPeopleDataBloc(get<_i15.GetPeopleUseCase>()));
+  gh.factory<_i19.GetPersonInfoBloc>(() => _i19.GetPersonInfoBloc(
+        get<_i17.GetPersonInfoUseCase>(),
+        get<_i16.GetPersonImagesUseCase>(),
+      ));
   return get;
 }
 
-class _$InjectableModule extends _i19.InjectableModule {}
+class _$InjectableModule extends _i20.InjectableModule {}

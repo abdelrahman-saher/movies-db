@@ -222,6 +222,7 @@ mixin _$GetPersonInfoState {
   bool? get isLoading => throw _privateConstructorUsedError;
   Option<Either<Failure, PersonInfoEntity>>? get result =>
       throw _privateConstructorUsedError;
+  List<PersonImageEntity>? get images => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $GetPersonInfoStateCopyWith<GetPersonInfoState> get copyWith =>
@@ -234,7 +235,9 @@ abstract class $GetPersonInfoStateCopyWith<$Res> {
           GetPersonInfoState value, $Res Function(GetPersonInfoState) then) =
       _$GetPersonInfoStateCopyWithImpl<$Res>;
   $Res call(
-      {bool? isLoading, Option<Either<Failure, PersonInfoEntity>>? result});
+      {bool? isLoading,
+      Option<Either<Failure, PersonInfoEntity>>? result,
+      List<PersonImageEntity>? images});
 }
 
 /// @nodoc
@@ -250,6 +253,7 @@ class _$GetPersonInfoStateCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = freezed,
     Object? result = freezed,
+    Object? images = freezed,
   }) {
     return _then(_value.copyWith(
       isLoading: isLoading == freezed
@@ -260,6 +264,10 @@ class _$GetPersonInfoStateCopyWithImpl<$Res>
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
               as Option<Either<Failure, PersonInfoEntity>>?,
+      images: images == freezed
+          ? _value.images
+          : images // ignore: cast_nullable_to_non_nullable
+              as List<PersonImageEntity>?,
     ));
   }
 }
@@ -272,7 +280,9 @@ abstract class _$$_GetPersonInfoStateCopyWith<$Res>
       __$$_GetPersonInfoStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {bool? isLoading, Option<Either<Failure, PersonInfoEntity>>? result});
+      {bool? isLoading,
+      Option<Either<Failure, PersonInfoEntity>>? result,
+      List<PersonImageEntity>? images});
 }
 
 /// @nodoc
@@ -290,6 +300,7 @@ class __$$_GetPersonInfoStateCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = freezed,
     Object? result = freezed,
+    Object? images = freezed,
   }) {
     return _then(_$_GetPersonInfoState(
       isLoading: isLoading == freezed
@@ -300,6 +311,10 @@ class __$$_GetPersonInfoStateCopyWithImpl<$Res>
           ? _value.result
           : result // ignore: cast_nullable_to_non_nullable
               as Option<Either<Failure, PersonInfoEntity>>?,
+      images: images == freezed
+          ? _value._images
+          : images // ignore: cast_nullable_to_non_nullable
+              as List<PersonImageEntity>?,
     ));
   }
 }
@@ -307,16 +322,26 @@ class __$$_GetPersonInfoStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_GetPersonInfoState implements _GetPersonInfoState {
-  const _$_GetPersonInfoState({this.isLoading, this.result});
+  const _$_GetPersonInfoState(
+      {this.isLoading, this.result, final List<PersonImageEntity>? images})
+      : _images = images;
 
   @override
   final bool? isLoading;
   @override
   final Option<Either<Failure, PersonInfoEntity>>? result;
+  final List<PersonImageEntity>? _images;
+  @override
+  List<PersonImageEntity>? get images {
+    final value = _images;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'GetPersonInfoState(isLoading: $isLoading, result: $result)';
+    return 'GetPersonInfoState(isLoading: $isLoading, result: $result, images: $images)';
   }
 
   @override
@@ -325,14 +350,16 @@ class _$_GetPersonInfoState implements _GetPersonInfoState {
         (other.runtimeType == runtimeType &&
             other is _$_GetPersonInfoState &&
             const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
-            const DeepCollectionEquality().equals(other.result, result));
+            const DeepCollectionEquality().equals(other.result, result) &&
+            const DeepCollectionEquality().equals(other._images, _images));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(isLoading),
-      const DeepCollectionEquality().hash(result));
+      const DeepCollectionEquality().hash(result),
+      const DeepCollectionEquality().hash(_images));
 
   @JsonKey(ignore: true)
   @override
@@ -343,14 +370,16 @@ class _$_GetPersonInfoState implements _GetPersonInfoState {
 
 abstract class _GetPersonInfoState implements GetPersonInfoState {
   const factory _GetPersonInfoState(
-          {final bool? isLoading,
-          final Option<Either<Failure, PersonInfoEntity>>? result}) =
-      _$_GetPersonInfoState;
+      {final bool? isLoading,
+      final Option<Either<Failure, PersonInfoEntity>>? result,
+      final List<PersonImageEntity>? images}) = _$_GetPersonInfoState;
 
   @override
   bool? get isLoading;
   @override
   Option<Either<Failure, PersonInfoEntity>>? get result;
+  @override
+  List<PersonImageEntity>? get images;
   @override
   @JsonKey(ignore: true)
   _$$_GetPersonInfoStateCopyWith<_$_GetPersonInfoState> get copyWith =>
