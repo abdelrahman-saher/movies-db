@@ -27,12 +27,13 @@ class PersonInfoPage extends StatelessWidget {
       builder: (context, state) {
         return Padding(
           padding: EdgeInsets.all(20.r),
-          child: state.isLoading!
-              ? Center(
-                  child: AppComponents.load,
-                )
-              : SingleChildScrollView(
-                  child: Column(
+          child: SingleChildScrollView(
+            child: state.isLoading!
+                ? Center(
+                    child: AppComponents.load,
+                  )
+                : Column(
+                    mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(
@@ -166,9 +167,53 @@ class PersonInfoPage extends StatelessWidget {
                           color: AppColors.light,
                         ),
                       ),
+                      SizedBox(
+                        height: 20.h,
+                      ),
+                      Text(
+                        "Images",
+                        style: AppFonts.labelL.copyWith(
+                          color: AppColors.dark,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 8.h,
+                      ),
+                      GridView.count(
+                        childAspectRatio: 1,
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 10.w,
+                        mainAxisSpacing: 10.w,
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        children: state.images!
+                            .map(
+                              (e) => CachedNetworkImage(
+                                imageUrl: e.image!.imageUrl(),
+                                fit: BoxFit.cover,
+                                height: 200.r,
+                                width: 200.r,
+                                placeholder: (context, url) => Image.asset(
+                                  ImgAssets.placeholder,
+                                  fit: BoxFit.cover,
+                                  height: 200.r,
+                                  width: 200.r,
+                                ),
+                                errorWidget: (context, url, error) => Center(
+                                  child: Image.asset(
+                                    ImgAssets.placeholder,
+                                    fit: BoxFit.cover,
+                                    height: 200.r,
+                                    width: 200.r,
+                                  ),
+                                ),
+                              ),
+                            )
+                            .toList(),
+                      ),
                     ],
                   ),
-                ),
+          ),
         );
       },
     );
