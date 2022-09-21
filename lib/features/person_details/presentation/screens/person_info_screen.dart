@@ -1,0 +1,45 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:themovie/core/utils/app_fonts.dart';
+import 'package:themovie/core/utils/app_strings.dart';
+import 'package:themovie/features/popular_people/domain/entities/person.dart';
+
+import '../../../../core/utils/app_colors.dart';
+import '../../../../injection.dart';
+import '../bloc/get_person_info/get_person_info_bloc.dart';
+
+class PersonInfoScreen extends StatelessWidget {
+  final PersonEntity person;
+  const PersonInfoScreen(this.person, {Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: AppColors.background,
+      appBar: AppBar(
+        title: Text(
+          AppStrings.personInfoScreenTitle,
+          style: AppFonts.labelL.copyWith(
+            color: AppColors.dark,
+          ),
+        ),
+        backgroundColor: AppColors.background,
+        elevation: 5,
+        leading: IconButton(
+          icon: const Icon(
+            Icons.keyboard_arrow_left,
+          ),
+          onPressed: () => context.router.pop(),
+        ),
+      ),
+      body: BlocProvider(
+        create: (context) => getIt<GetPersonInfoBloc>()
+          ..add(
+            GetPersonInfoEvent.getInfo(person),
+          ),
+        child: Container(),
+      ),
+    );
+  }
+}
