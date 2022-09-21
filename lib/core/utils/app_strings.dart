@@ -1,5 +1,5 @@
 class AppStrings {
-  static const String appName = 'Movies App';
+  static const String appName = 'MovieDB';
   static const String apiErrorMessageKey = 'status_message';
   static const String fetchDataExceptionMessage = 'Error During Communication';
   static const String badRequestExceptionMessage = 'Bad Request';
