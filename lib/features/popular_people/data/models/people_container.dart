@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:themovie/features/popular_people/data/models/person.dart';
+import 'package:themovie/features/popular_people/domain/entities/people_container.dart';
 
 class PeopleContainerModel extends Equatable {
   final bool? hasMore;
@@ -17,10 +18,10 @@ class PeopleContainerModel extends Equatable {
     );
   }
 
-  PeopleContainerModel toDomain() {
-    return PeopleContainerModel(
-      hasMore,
-      people!.map((e) => e.toDomain()).toList(),
+  PeopleContainer toDomain() {
+    return PeopleContainer(
+      hasMore: hasMore,
+      people: people!.map((e) => e.toDomain()).toList(),
     );
   }
 

@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:themovie/features/popular_people/domain/entities/person.dart';
 
 import '../../../../core/global/image.dart';
 
@@ -22,12 +23,12 @@ class PersonModel extends Equatable {
     );
   }
 
-  PersonModel toDomain() {
-    return PersonModel(
-      id,
-      name,
-      department,
-      profileImage,
+  PersonEntity toDomain() {
+    return PersonEntity(
+      id: id,
+      name: name,
+      department: department,
+      profileImage: profileImage,
     );
   }
 
