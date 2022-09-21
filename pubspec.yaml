@@ -39,5 +39,5 @@ flutter_icons:
   image_path: "assets/images/logo.png"
   remove_alpha_ios: true
 flutter_native_splash:
-  background_image: assets/images/logo.png
+  image: assets/images/logo.png
   color: "#0d253f"
