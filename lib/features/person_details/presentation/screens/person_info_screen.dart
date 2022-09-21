@@ -8,6 +8,7 @@ import 'package:themovie/features/popular_people/domain/entities/person.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../injection.dart';
 import '../bloc/get_person_info/get_person_info_bloc.dart';
+import '../widgets/person_info_page.dart';
 
 class PersonInfoScreen extends StatelessWidget {
   final PersonEntity person;
@@ -25,10 +26,12 @@ class PersonInfoScreen extends StatelessWidget {
           ),
         ),
         backgroundColor: AppColors.background,
-        elevation: 5,
+        elevation: 3,
+        centerTitle: true,
         leading: IconButton(
-          icon: const Icon(
+          icon: Icon(
             Icons.keyboard_arrow_left,
+            color: AppColors.dark,
           ),
           onPressed: () => context.router.pop(),
         ),
@@ -38,7 +41,7 @@ class PersonInfoScreen extends StatelessWidget {
           ..add(
             GetPersonInfoEvent.getInfo(person),
           ),
-        child: Container(),
+        child: const PersonInfoPage(),
       ),
     );
   }

@@ -23,6 +23,7 @@ class PersonItem extends StatelessWidget {
       onTap: () => context.router.push(PersonInfoScreenRoute(person: _person)),
       child: Container(
         margin: EdgeInsets.only(bottom: 8.h),
+        color: AppColors.background,
         child: Row(
           children: [
             Expanded(

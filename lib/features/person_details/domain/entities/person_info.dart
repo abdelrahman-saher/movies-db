@@ -13,7 +13,7 @@ class PersonInfoEntity extends Equatable {
     this.biography,
     this.dateOfBirth,
   });
-
+  factory PersonInfoEntity.empty() => const PersonInfoEntity();
   @override
   List<Object> get props => [
         basicInfo!,

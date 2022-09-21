@@ -54,7 +54,7 @@ class AppFonts {
   );
   static TextStyle labelM = TextStyle(
     fontStyle: FontStyle.normal,
-    fontSize: 12.sp,
+    fontSize: 18.sp,
     fontWeight: FontWeight.w500,
   );
   static TextStyle labelS = TextStyle(
