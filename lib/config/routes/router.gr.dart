@@ -14,7 +14,8 @@
 import 'package:auto_route/auto_route.dart' as _i2;
 import 'package:flutter/material.dart' as _i3;
 
-import '../../home.dart' as _i1;
+import '../../features/popular_people/presentation/screens/people_screen.dart'
+    as _i1;
 
 class AppRouter extends _i2.RootStackRouter {
   AppRouter([_i3.GlobalKey<_i3.NavigatorState>? navigatorKey])
@@ -22,10 +23,10 @@ class AppRouter extends _i2.RootStackRouter {
 
   @override
   final Map<String, _i2.PageFactory> pagesMap = {
-    HomeScreenRoute.name: (routeData) {
+    PeopleScreenRoute.name: (routeData) {
       return _i2.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: _i1.HomeScreen(),
+        child: const _i1.PeopleScreen(),
       );
     }
   };
@@ -33,20 +34,20 @@ class AppRouter extends _i2.RootStackRouter {
   @override
   List<_i2.RouteConfig> get routes => [
         _i2.RouteConfig(
-          HomeScreenRoute.name,
+          PeopleScreenRoute.name,
           path: '/',
         )
       ];
 }
 
 /// generated route for
-/// [_i1.HomeScreen]
-class HomeScreenRoute extends _i2.PageRouteInfo<void> {
-  const HomeScreenRoute()
+/// [_i1.PeopleScreen]
+class PeopleScreenRoute extends _i2.PageRouteInfo<void> {
+  const PeopleScreenRoute()
       : super(
-          HomeScreenRoute.name,
+          PeopleScreenRoute.name,
           path: '/',
         );
 
-  static const String name = 'HomeScreenRoute';
+  static const String name = 'PeopleScreenRoute';
 }

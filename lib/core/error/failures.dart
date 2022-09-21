@@ -11,8 +11,20 @@ class ServerFailure extends Failure {
   const ServerFailure(message) : super(message);
 }
 
+class NoDataFoundFailure extends Failure {
+  const NoDataFoundFailure(message) : super(message);
+}
+
+class BadRequestFailure extends Failure {
+  const BadRequestFailure(message) : super(message);
+}
+
 class UnKnownFailure extends Failure {
   const UnKnownFailure(message) : super(message);
+}
+
+class NoInternetConnectoinFailure extends Failure {
+  const NoInternetConnectoinFailure(message) : super(message);
 }
 
 class ValueFailure extends Failure {
