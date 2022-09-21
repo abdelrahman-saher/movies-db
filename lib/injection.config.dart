@@ -22,7 +22,7 @@ import 'features/popular_people/domain/repository/people_repository.dart'
     as _i9;
 import 'features/popular_people/domain/usecases/get_people_usecase.dart'
     as _i11;
-import 'features/popular_people/presentation/bloc/bloc/get_people_data_bloc.dart'
+import 'features/popular_people/presentation/bloc/get_people_data/get_people_data_bloc.dart'
     as _i12; // ignore_for_file: unnecessary_lambdas
 
 // ignore_for_file: lines_longer_than_80_chars

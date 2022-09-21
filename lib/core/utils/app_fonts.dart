@@ -14,7 +14,7 @@ class AppFonts {
   );
   static TextStyle headerM = TextStyle(
     fontStyle: FontStyle.normal,
-    fontSize: 60.sp,
+    fontSize: 40.sp,
     fontWeight: FontWeight.bold,
   );
   static TextStyle headerS = TextStyle(
@@ -49,7 +49,7 @@ class AppFonts {
   );
   static TextStyle labelL = TextStyle(
     fontStyle: FontStyle.normal,
-    fontSize: 13.sp,
+    fontSize: 25.sp,
     fontWeight: FontWeight.bold,
   );
   static TextStyle labelM = TextStyle(

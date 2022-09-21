@@ -23,7 +23,7 @@ class AppIntercepters extends Interceptor {
 
   @override
   void onError(DioError err, ErrorInterceptorHandler handler) {
-    debugPrint('ERROR[${err.response?.statusCode}] => PATH: ${err.message}');
+    debugPrint('ERROR[${err.response?.statusCode}] => PATH: ${err.response}');
 
     super.onError(err, handler);
   }
