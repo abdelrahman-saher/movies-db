@@ -1,16 +1,27 @@
-# themovie
+# Currency Converter App
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Simple app to display popular people on TMDB.
+## Architecture Layers
+* Data
+* Domain
+* Presentation
+## Libraries and tools used
+* Routing with [AutoRoute](https://pub.dev/packages/auto_route)
+* Functional Programming with [Dartz](https://pub.dev/packages/dartz)
+* Handling http requests with [Dio](https://pub.dev/packages/dio)
+* State Management with [Bloc](https://pub.dev/packages/bloc)
+* Dependency Injection with [GetIt](https://pub.dev/packages/get_it) and [Injectable](https://pub.dev/packages/injectable)
+* Generating Data/Union classes with [Freezed](https://pub.dev/packages/freezed)
+* Caching Images with [cached_network_image]
+## Requirements
+* JDK 1.8
+* Android SDK
+* Latest Android SDK Tools and build tools
+* TMDB api key
+## Used APIs
+* [TMDB api](https://developers.themoviedb.org/)
+## App Features
+* Get popular people with pagination enabled and infinite scrolling
+* Get Basic info of person with images
+* View full size image
+* download image
