@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:image_downloader/image_downloader.dart';
 import 'package:injectable/injectable.dart';
 import 'package:themovie/core/error/failures.dart';
 import 'package:themovie/features/person_details/data/data/remote/person_info_remote_data_source.dart';
@@ -56,6 +57,17 @@ class PersonInfoRepositoryImpl implements PersonInfoRepository {
       return Left(BadRequestFailure(e.message));
     } on NoInternetConnectionException catch (e) {
       return Left(NoInternetConnectoinFailure(e.message));
+    } catch (e) {
+      return Left(UnKnownFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, Unit>> downloadImage(
+      {PersonImageEntity? image}) async {
+    try {
+      await ImageDownloader.downloadImage(image!.image!.imageUrl());
+      return const Right(unit);
     } catch (e) {
       return Left(UnKnownFailure(e.toString()));
     }

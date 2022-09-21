@@ -1,11 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dartz/dartz.dart';
+import 'package:easy_image_viewer/easy_image_viewer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:themovie/features/person_details/domain/entities/person_info.dart';
 import 'package:themovie/features/person_details/presentation/bloc/get_person_info/get_person_info_bloc.dart';
+import 'package:themovie/features/person_details/presentation/widgets/image_item.dart';
 
 import '../../../../core/error/failures.dart';
 import '../../../../core/utils/app_colors.dart';
@@ -187,28 +189,7 @@ class PersonInfoPage extends StatelessWidget {
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
                         children: state.images!
-                            .map(
-                              (e) => CachedNetworkImage(
-                                imageUrl: e.image!.imageUrl(),
-                                fit: BoxFit.cover,
-                                height: 200.r,
-                                width: 200.r,
-                                placeholder: (context, url) => Image.asset(
-                                  ImgAssets.placeholder,
-                                  fit: BoxFit.cover,
-                                  height: 200.r,
-                                  width: 200.r,
-                                ),
-                                errorWidget: (context, url, error) => Center(
-                                  child: Image.asset(
-                                    ImgAssets.placeholder,
-                                    fit: BoxFit.cover,
-                                    height: 200.r,
-                                    width: 200.r,
-                                  ),
-                                ),
-                              ),
-                            )
+                            .map((e) => PersonImageItem(e))
                             .toList(),
                       ),
                     ],

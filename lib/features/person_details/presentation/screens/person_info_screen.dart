@@ -8,6 +8,7 @@ import 'package:themovie/features/popular_people/domain/entities/person.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../injection.dart';
 import '../bloc/get_person_info/get_person_info_bloc.dart';
+import '../bloc/person_image_downloader/person_image_downloader_bloc.dart';
 import '../widgets/person_info_page.dart';
 
 class PersonInfoScreen extends StatelessWidget {
@@ -36,11 +37,16 @@ class PersonInfoScreen extends StatelessWidget {
           onPressed: () => context.router.pop(),
         ),
       ),
-      body: BlocProvider(
-        create: (context) => getIt<GetPersonInfoBloc>()
-          ..add(
-            GetPersonInfoEvent.getInfo(person),
+      body: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => getIt<GetPersonInfoBloc>()
+              ..add(
+                GetPersonInfoEvent.getInfo(person),
+              ),
           ),
+          BlocProvider(create: (context) => getIt<PersonImageDownloaderBloc>()),
+        ],
         child: const PersonInfoPage(),
       ),
     );

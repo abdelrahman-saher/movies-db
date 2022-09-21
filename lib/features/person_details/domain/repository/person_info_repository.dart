@@ -9,4 +9,5 @@ abstract class PersonInfoRepository {
   Future<Either<Failure, PersonInfoEntity>> getInfo({PersonEntity? person});
   Future<Either<Failure, List<PersonImageEntity>>> getImages(
       {PersonEntity? person});
+  Future<Either<Failure, Unit>> downloadImage({PersonImageEntity? image});
 }
