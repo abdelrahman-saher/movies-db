@@ -5,7 +5,7 @@ import 'package:themovie/features/popular_people/data/data/remote/people_remote_
 import 'package:themovie/features/popular_people/data/models/people_container.dart';
 import 'package:themovie/features/popular_people/domain/entities/people_container.dart';
 
-import '../../../../core/error/exceptions.dart';
+import '../../../../core/error/failure_adapter.dart';
 import '../../domain/repository/people_repository.dart';
 
 @Injectable(as: PepoleRepository)
@@ -20,18 +20,8 @@ class PepoleRepositoryImpl implements PepoleRepository {
     try {
       PeopleContainerModel people = await _remoteDataSource.getPeople(page);
       return right(people.toDomain());
-    } on InternalServerErrorException catch (e) {
-      return Left(ServerFailure(e.message));
-    } on NotFoundException catch (e) {
-      return Left(NoDataFoundFailure(e.message));
-    } on FetchDataException catch (e) {
-      return Left(NoDataFoundFailure(e.message));
-    } on BadRequestException catch (e) {
-      return Left(BadRequestFailure(e.message));
-    } on NoInternetConnectionException catch (e) {
-      return Left(NoInternetConnectoinFailure(e.message));
     } catch (e) {
-      return Left(UnKnownFailure(e.toString()));
+      return Left(FailureAdapter.fromException(e as Exception));
     }
   }
 }

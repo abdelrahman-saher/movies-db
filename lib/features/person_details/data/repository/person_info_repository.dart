@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:image_downloader/image_downloader.dart';
 import 'package:injectable/injectable.dart';
+import 'package:themovie/core/error/failure_adapter.dart';
 import 'package:themovie/core/error/failures.dart';
 import 'package:themovie/features/person_details/data/data/remote/person_info_remote_data_source.dart';
 import 'package:themovie/features/person_details/data/models/person_image.dart';
@@ -25,18 +26,8 @@ class PersonInfoRepositoryImpl implements PersonInfoRepository {
     try {
       PersonInfoModel people = await _remoteDataSource.getInfo(person!.id!);
       return right(people.toDomain(person));
-    } on InternalServerErrorException catch (e) {
-      return Left(ServerFailure(e.message));
-    } on NotFoundException catch (e) {
-      return Left(NoDataFoundFailure(e.message));
-    } on FetchDataException catch (e) {
-      return Left(NoDataFoundFailure(e.message));
-    } on BadRequestException catch (e) {
-      return Left(BadRequestFailure(e.message));
-    } on NoInternetConnectionException catch (e) {
-      return Left(NoInternetConnectoinFailure(e.message));
     } catch (e) {
-      return Left(UnKnownFailure(e.toString()));
+      return Left(FailureAdapter.fromException(e as Exception));
     }
   }
 
@@ -47,18 +38,8 @@ class PersonInfoRepositoryImpl implements PersonInfoRepository {
       List<PersonImageModel> images =
           await _remoteDataSource.getImages(person!.id!);
       return right(images.map((e) => e.toDomain()).toList());
-    } on InternalServerErrorException catch (e) {
-      return Left(ServerFailure(e.message));
-    } on NotFoundException catch (e) {
-      return Left(NoDataFoundFailure(e.message));
-    } on FetchDataException catch (e) {
-      return Left(NoDataFoundFailure(e.message));
-    } on BadRequestException catch (e) {
-      return Left(BadRequestFailure(e.message));
-    } on NoInternetConnectionException catch (e) {
-      return Left(NoInternetConnectoinFailure(e.message));
     } catch (e) {
-      return Left(UnKnownFailure(e.toString()));
+      return Left(FailureAdapter.fromException(e as Exception));
     }
   }
 
@@ -69,7 +50,7 @@ class PersonInfoRepositoryImpl implements PersonInfoRepository {
       await ImageDownloader.downloadImage(image!.image!.imageUrl());
       return const Right(unit);
     } catch (e) {
-      return Left(UnKnownFailure(e.toString()));
+      return Left(FailureAdapter.fromException(e as Exception));
     }
   }
 }
