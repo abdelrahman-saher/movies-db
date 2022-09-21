@@ -11,6 +11,7 @@ class PeopleRemoteDataSourceImpl implements PeopleRemoteDataSource {
   PeopleRemoteDataSourceImpl(this.apiConsumer);
   @override
   Future<PeopleContainerModel> getPeople(int? page) async {
+    print(page);
     Map<String, dynamic> result = Map<String, dynamic>.from(
       await apiConsumer.get(EndPoints.peopleUrl, queryParameters: {
         "page": page!,

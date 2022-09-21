@@ -4,5 +4,5 @@ import 'package:themovie/features/popular_people/domain/entities/people_containe
 import '../../../../core/error/failures.dart';
 
 abstract class PepoleRepository {
-  Future<Either<Failure, PeopleContainer>> getPeople({int page = 0});
+  Future<Either<Failure, PeopleContainer>> getPeople({int? page});
 }

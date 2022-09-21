@@ -22,6 +22,7 @@ class GetPeopleDataBloc extends Bloc<GetPeopleDataEvent, GetPeopleDataState> {
         emit(state.copyWith(isLoadingMore: true));
         final Either<Failure, PeopleContainer> result =
             await _getPeopleUseCase(page: event.page);
+        
         result.fold(
           (l) => null,
           (r) {
@@ -37,7 +38,7 @@ class GetPeopleDataBloc extends Bloc<GetPeopleDataEvent, GetPeopleDataState> {
       } else if (event is InitialLoadPeopleEvent) {
         emit(state.copyWith(isLoading: true));
         final Either<Failure, PeopleContainer> result =
-            await _getPeopleUseCase(page: 0);
+            await _getPeopleUseCase();
         result.fold(
           (l) => null,
           (r) {

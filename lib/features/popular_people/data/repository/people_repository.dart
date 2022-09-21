@@ -16,7 +16,7 @@ class PepoleRepositoryImpl implements PepoleRepository {
   );
 
   @override
-  Future<Either<Failure, PeopleContainer>> getPeople({int page = 0}) async {
+  Future<Either<Failure, PeopleContainer>> getPeople({int? page}) async {
     try {
       PeopleContainerModel people = await _remoteDataSource.getPeople(page);
       return right(people.toDomain());

@@ -9,7 +9,7 @@ import '../repository/people_repository.dart';
 class GetPeopleUseCase {
   GetPeopleUseCase(this._pepoleRepository);
   final PepoleRepository _pepoleRepository;
-  Future<Either<Failure, PeopleContainer>> call({int? page}) async {
+  Future<Either<Failure, PeopleContainer>> call({int? page = 1}) async {
     return await _pepoleRepository.getPeople(page: page!);
   }
 }
