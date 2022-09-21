@@ -6,7 +6,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:themovie/core/error/failures.dart';
 import 'package:themovie/features/person_details/domain/entities/person_info.dart';
-import 'package:themovie/features/person_details/domain/usecases/download_image_usecase.dart';
 import 'package:themovie/features/person_details/domain/usecases/get_images_usecase.dart';
 import 'package:themovie/features/person_details/domain/usecases/get_info_usecase.dart';
 import 'package:themovie/features/popular_people/domain/entities/person.dart';
